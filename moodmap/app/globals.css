@@ -1,8 +1,86 @@
 @import "tailwindcss";
 
+/*
+ * =================================================================================
+ * Font Definitions
+ * =================================================================================
+ */
+
+@font-face {
+  font-family: 'Geomanist';
+  src: url('/fonts/Geomanist/Geomanist-Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geomanist';
+  src: url('/fonts/Geomanist/Geomanist-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geomanist';
+  src: url('/fonts/Geomanist/Geomanist-Regular.otf') format('opentype');
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geomanist';
+  src: url('/fonts/Geomanist/Geomanist-Book.otf') format('opentype');
+  font-weight: 400; /* Book */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geomanist';
+  src: url('/fonts/Geomanist/Geomanist-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geomanist';
+  src: url('/fonts/Geomanist/Geomanist-Bold.otf') format('opentype');
+  font-weight: 700; /* Bold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geomanist';
+  src: url('/fonts/Geomanist/Geomanist-Ultra.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geomanist';
+  src: url('/fonts/Geomanist/Geomanist-Black.otf') format('opentype');
+  font-weight: 900; /* Black */
+  font-style: normal;
+}
+
+
+/*
+ * =================================================================================
+ * Root Variables
+ * =================================================================================
+ */
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Moodmap Palette */
+  --primary-green: #c1ea6f;
+  --primary-pink: #ff7cac;
+  --white: #ffffff;
+  --gradient: linear-gradient(to right, var(--primary-green), var(--primary-pink));
+
+  /* Base font sizes for responsive typography */
+  font-size: 16px;
 }
 
 @theme inline {
@@ -19,8 +97,52 @@
   }
 }
 
+/*
+ * =================================================================================
+ * Global and Typography Styles
+ * =================================================================================
+ */
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400; /* Regular */
+  margin: 0;
+  padding: 0;
 }
+
+h1, h2, h3 {
+  font-family: 'Geomanist', sans-serif;
+}
+
+/* H1: Large and impactful */
+h1 {
+  font-size: 3.5rem;
+  font-weight: 700; /* Bold for impact */
+}
+
+/* H2: Bold (700 weight), large size */
+h2 {
+  font-size: 2.5rem;
+  font-weight: 700; /* Bold */
+}
+
+/* H3: Semi-Bold (600 weight), medium-large size */
+h3 {
+  font-size: 1.75rem;
+  font-weight: 600; /* Semi-Bold */
+}
+
+/*
+ * =================================================================================
+ * Component Styles
+ * =================================================================================
+ */
+
+.functional-text {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500; /* Medium as per FE.md */
+  font-size: 0.9rem; /* Slightly smaller than body */
+}
+
