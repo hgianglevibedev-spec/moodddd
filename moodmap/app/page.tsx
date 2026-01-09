@@ -6,9 +6,11 @@ export default function Home() {
     <div className="relative min-h-screen">
       <NavigationBar/>
       <main className="flex flex-col items-center justify-center min-h-screen p-8" style={{ background: 'var(--gradient)'}}>
-        <div className="text-center text-white">
-          <h1 className="text-5xl md:text-7xl font-bold">Moodmap</h1>
-          <h2 className="text-xl md:text-2xl mt-2">Map your journies - Tell your stories</h2>
+        <div className="text-center text-white mt-20">
+          <h1 className="text-5xl md:text-7xl font-bold">
+            Map your journies <br />
+            Tell your stories
+          </h1>
           <p className="mt-4 text-lg opacity-90">
             Create and share beautiful maps of your life's moments.
           </p>
