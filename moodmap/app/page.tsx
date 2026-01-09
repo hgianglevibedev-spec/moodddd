@@ -1,5 +1,8 @@
+'use client';
+
 import NavigationBar from './components/NavigationBar';
 import Link from 'next/link';
+import { GlowingEffect } from '@/components/ui/glowing-effect';
 
 export default function Home() {
   return (
@@ -31,21 +34,24 @@ export default function Home() {
               <p className="text-gray-400 mt-2">All the tools you need to beautifully document your travels.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="card">
-                <h3 className="text-3xl font-bold text-white leading-tight">Interactive<br/>Mapping</h3>
-                <p className="text-gray-400">
+              <div className="relative bg-zinc-900 p-8 rounded-lg flex flex-col justify-between transition-colors hover:bg-zinc-800 min-h-[300px]">
+                <GlowingEffect disabled={false} glow={true} />
+                <h3 className="relative z-10 text-3xl font-bold text-white leading-tight">Interactive<br/>Mapping</h3>
+                <p className="relative z-10 text-gray-400">
                   Add locations, draw routes, and customize your map. Your journey, your style.
                 </p>
               </div>
-              <div className="card">
-                <h3 className="text-3xl font-bold text-white leading-tight">Rich Journaling</h3>
-                <p className="text-gray-400">
+              <div className="relative bg-zinc-900 p-8 rounded-lg flex flex-col justify-between transition-colors hover:bg-zinc-800 min-h-[300px]">
+                <GlowingEffect disabled={false} glow={true} />
+                <h3 className="relative z-10 text-3xl font-bold text-white leading-tight">Rich Journaling</h3>
+                <p className="relative z-10 text-gray-400">
                   Bring your memories to life with photos, videos, and rich text entries for every step of the way.
                 </p>
               </div>
-              <div className="card">
-                <h3 className="text-3xl font-bold text-white leading-tight">Community &<br/>Sharing</h3>
-                <p className="text-gray-400">
+              <div className="relative bg-zinc-900 p-8 rounded-lg flex flex-col justify-between transition-colors hover:bg-zinc-800 min-h-[300px]">
+                <GlowingEffect disabled={false} glow={true} />
+                <h3 className="relative z-10 text-3xl font-bold text-white leading-tight">Community &<br/>Sharing</h3>
+                <p className="relative z-10 text-gray-400">
                   Share your adventures with friends, family, and community. Inspire and be inspired.
                 </p>
               </div>
