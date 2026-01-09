@@ -314,3 +314,17 @@ h3 {
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .card {
+    @apply bg-zinc-900 
+           p-8 
+           rounded-lg 
+           flex 
+           flex-col 
+           justify-between 
+           transition-colors 
+           hover:bg-zinc-800 
+           min-h-[300px];
+  }
+}
