@@ -1,12 +1,10 @@
 import NavigationBar from './components/NavigationBar';
 import Link from 'next/link';
-import { HeroBackground } from './components/ui/HeroBackground';
 
 export default function Home() {
   return (
     <div className="relative min-h-screen">
       <NavigationBar/>
-      <HeroBackground />
       <main className="flex flex-col items-center justify-center min-h-screen p-8">
         <div className="text-center text-white mt-20">
           <h1 className="text-5xl md:text-7xl font-bold">
