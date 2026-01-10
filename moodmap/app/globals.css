@@ -77,6 +77,8 @@
 
   /* Moodmap Palette */
   --primary-green: #c1ea6f;
+  --primary-green-transparent: rgba(193, 234, 111, 0.1);
+  --primary-green-halftransparent: rgba(193, 234, 111, 0.5);
   --primary-pink: #ff7cac;
   --white: #ffffff;
   --gradient: linear-gradient(to right, var(--primary-green), var(--primary-pink));
@@ -376,5 +378,9 @@ h3 {
            transition-colors 
            hover:bg-zinc-800 
            min-h-[300px];
+  }
+
+  .form-input {
+    @apply w-full bg-zinc-800 border-[0.5px] border-zinc-700 rounded-md px-4 py-2 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-green)];
   }
 }

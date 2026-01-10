@@ -3,8 +3,8 @@
 import NavigationBar from './components/NavigationBar';
 import Link from 'next/link';
 import { GlowingEffect } from '@/components/ui/glowing-effect';
-import Carousel from './components/Carousel';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
+import Carousel from './components/Carousel';
 
 export default function Home() {
   return (
@@ -19,10 +19,10 @@ export default function Home() {
               Tell your stories
             </h1>
             <p className="mt-4 text-lg opacity-90">
-              Create and share beautiful maps of your life's moments.
-            </p>
+                Create and share beautiful maps of your life&apos;s moments.
+              </p>
             <div className="mt-8 flex justify-center gap-4">
-              <Link href="/get-started" className="btn-primary">Get started</Link>
+              <Link href="/library" className="btn-primary">Get started</Link>
               <Link href="#features" className="btn-secondary">Learn more</Link>
             </div>
           </div>
@@ -81,29 +81,11 @@ export default function Home() {
 
               {/* Right Column */}
               <div className="flex flex-col space-y-8 mt-12 md:mt-0">
-                <div>
-                  <h4 className="text-2xl font-bold text-black mb-2">Build Your Trip Library</h4>
-                  <a href="#" className="text-black font-semibold flex items-center group">
-                    Read More
-                    <span className="ml-2 rounded-full w-6 h-6 flex items-center justify-center transition-transform group-hover:translate-x-1" style={{ backgroundColor: 'var(--primary-green)', color: 'black' }}>→</span>
-                  </a>
-                </div>
+                <h4 className="text-2xl font-bold text-black">Build Your Trip Library</h4>
                 <hr className="border-gray-300"/>
-                <div>
-                  <h4 className="text-2xl font-bold text-black mb-2">Journal Your Adventures</h4>
-                  <a href="#" className="text-black font-semibold flex items-center group">
-                    Read More
-                    <span className="ml-2 rounded-full w-6 h-6 flex items-center justify-center transition-transform group-hover:translate-x-1" style={{ backgroundColor: 'var(--primary-green)', color: 'black' }}>→</span>
-                  </a>
-                </div>
+                <h4 className="text-2xl font-bold text-black">Journal Your Adventures</h4>
                 <hr className="border-gray-300"/>
-                <div>
-                  <h4 className="text-2xl font-bold text-black mb-2">Share with the Community</h4>
-                  <a href="#" className="text-black font-semibold flex items-center group">
-                    Read More
-                    <span className="ml-2 rounded-full w-6 h-6 flex items-center justify-center transition-transform group-hover:translate-x-1" style={{ backgroundColor: 'var(--primary-green)', color: 'black' }}>→</span>
-                  </a>
-                </div>
+                <h4 className="text-2xl font-bold text-black">Share with the Community</h4>
               </div>
             </div>
           </div>
