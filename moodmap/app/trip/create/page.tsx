@@ -2,9 +2,11 @@
 "use client";
 import React, { useState } from 'react';
 import NavigationBar from '../../components/NavigationBar';
+import { useRouter } from 'next/navigation';
 import { Typewriter } from '../../../components/ui/typewriter-text';
 
 const CreateTripPage = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     title: '',
     location: '',
@@ -57,8 +59,7 @@ const CreateTripPage = () => {
       });
 
       if (response.ok) {
-        // Handle successful trip creation, e.g., redirect or show a success message
-        console.log('Trip created successfully');
+        router.push('/library');
       } else {
         // Handle error
         console.error('Failed to create trip');

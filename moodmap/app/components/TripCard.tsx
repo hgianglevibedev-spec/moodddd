@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { FlippingCard } from '@/components/ui/flipping-card';
 
 interface Trip {
@@ -20,6 +21,12 @@ interface TripCardProps {
 }
 
 const TripCard: React.FC<TripCardProps> = ({ trip, onDelete }) => {
+  const router = useRouter();
+
+  const handleDoubleClick = () => {
+    router.push(`/journal/${trip.id}`);
+  };
+
   const handleDelete = async () => {
     try {
       const response = await fetch(`/api/trips/${trip.id}`, {
@@ -70,7 +77,9 @@ const TripCard: React.FC<TripCardProps> = ({ trip, onDelete }) => {
   );
 
   const backContent = (
-    <div className="bg-zinc-800 rounded-lg h-full flex flex-col justify-center items-center">
+    <div
+      className="bg-zinc-800 rounded-lg h-full flex flex-col justify-center items-center"
+    >
       <Link href={`/trip/edit/${trip.id}`} passHref>
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">
           Edit
@@ -85,7 +94,19 @@ const TripCard: React.FC<TripCardProps> = ({ trip, onDelete }) => {
     </div>
   );
 
-  return <FlippingCard frontContent={frontContent} backContent={backContent} />;
+  return (
+    <div className="relative">
+      <FlippingCard
+        className="h-full"
+        frontContent={frontContent}
+        backContent={backContent}
+      />
+      <div
+        className="absolute inset-0 bg-transparent"
+        onDoubleClick={handleDoubleClick}
+      />
+    </div>
+  );
 };
 
 export default TripCard;
