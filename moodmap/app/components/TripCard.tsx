@@ -1,9 +1,10 @@
-
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { FlippingCard } from '@/components/ui/flipping-card';
 
 interface Trip {
-  id: number;
+  id: string;
   title: string;
   location: string;
   image: string;
@@ -15,10 +16,27 @@ interface Trip {
 
 interface TripCardProps {
   trip: Trip;
+  onDelete: (id: string) => void;
 }
 
-const TripCard: React.FC<TripCardProps> = ({ trip }) => {
-  return (
+const TripCard: React.FC<TripCardProps> = ({ trip, onDelete }) => {
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(`/api/trips/${trip.id}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        onDelete(trip.id);
+      } else {
+        console.error('Failed to delete trip');
+      }
+    } catch (error) {
+      console.error('An error occurred while deleting the trip:', error);
+    }
+  };
+
+  const frontContent = (
     <div className="bg-zinc-900 rounded-lg overflow-hidden">
       <div className="relative h-64">
         <Image src={trip.image} alt={trip.title} layout="fill" objectFit="cover" />
@@ -50,6 +68,24 @@ const TripCard: React.FC<TripCardProps> = ({ trip }) => {
       </div>
     </div>
   );
+
+  const backContent = (
+    <div className="bg-zinc-800 rounded-lg h-full flex flex-col justify-center items-center">
+      <Link href={`/trip/edit/${trip.id}`} passHref>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">
+          Edit
+        </button>
+      </Link>
+      <button
+        onClick={handleDelete}
+        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Delete
+      </button>
+    </div>
+  );
+
+  return <FlippingCard frontContent={frontContent} backContent={backContent} />;
 };
 
 export default TripCard;

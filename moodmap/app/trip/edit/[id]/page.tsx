@@ -1,10 +1,11 @@
-
 "use client";
-import React, { useState } from 'react';
-import NavigationBar from '../../components/NavigationBar';
-import { Typewriter } from '../../../components/ui/typewriter-text';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import NavigationBar from '../../../components/NavigationBar';
 
-const CreateTripPage = () => {
+const EditTripPage = ({ params }: { params: { id: string } }) => {
+  const router = useRouter();
+  const { id } = params;
   const [formData, setFormData] = useState({
     title: '',
     location: '',
@@ -15,6 +16,26 @@ const CreateTripPage = () => {
     duration: '',
     description: '',
   });
+
+  useEffect(() => {
+    const fetchTrip = async () => {
+      try {
+        const response = await fetch(`/api/trips/${id}`);
+        if (response.ok) {
+          const data = await response.json();
+          setFormData(data);
+        } else {
+          console.error('Failed to fetch trip');
+        }
+      } catch (error) {
+        console.error('An error occurred while fetching the trip:', error);
+      }
+    };
+
+    if (id) {
+      fetchTrip();
+    }
+  }, [id]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -48,8 +69,8 @@ const CreateTripPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/trips', {
-        method: 'POST',
+      const response = await fetch(`/api/trips/${id}`, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -57,14 +78,12 @@ const CreateTripPage = () => {
       });
 
       if (response.ok) {
-        // Handle successful trip creation, e.g., redirect or show a success message
-        console.log('Trip created successfully');
+        router.push('/library');
       } else {
-        // Handle error
-        console.error('Failed to create trip');
+        console.error('Failed to update trip');
       }
     } catch (error) {
-      console.error('An error occurred:', error);
+      console.error('An error occurred while updating the trip:', error);
     }
   };
 
@@ -72,9 +91,7 @@ const CreateTripPage = () => {
     <div className="min-h-screen bg-black text-white">
       <NavigationBar />
       <div className="container mx-auto px-4 pt-24 pb-8">
-        <h2 className="text-xl font-regular mb-8 text-center">
-          <Typewriter text="Create your new trip..." />
-        </h2>
+        <h2 className="text-xl font-regular mb-8 text-center">Edit your trip</h2>
         <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
           <div className="mb-6 flex items-center">
             <label htmlFor="title" className="w-32 pr-4 text-right text-sm font-medium">Title</label>
@@ -97,7 +114,6 @@ const CreateTripPage = () => {
             <input type="text" id="distance" name="distance" value={formData.distance} onChange={handleChange} className="form-input flex-1" />
           </div>
           <div className="mb-6 flex items-center">
-            .
             <label htmlFor="cities" className="w-32 pr-4 text-right text-sm font-medium">Cities</label>
             <input type="text" id="cities" name="cities" value={formData.cities} onChange={handleChange} className="form-input flex-1" />
           </div>
@@ -110,7 +126,7 @@ const CreateTripPage = () => {
             <textarea id="description" name="description" value={formData.description} onChange={handleChange} rows={4} className="form-input flex-1" />
           </div>
           <div className="flex justify-end">
-            <button type="submit" className="btn-primary">Create Trip</button>
+            <button type="submit" className="btn-primary">Update Trip</button>
           </div>
         </form>
       </div>
@@ -118,4 +134,4 @@ const CreateTripPage = () => {
   );
 };
 
-export default CreateTripPage;
+export default EditTripPage;
